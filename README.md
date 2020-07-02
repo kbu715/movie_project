@@ -24,4 +24,4 @@ Learning React and ES6 by building a Movie Discovery App.
 
 
 
-// .env에서 기본적으로 src파일을 보게 만들어준다.
+// .env에서 기본적으로 src파일을 보게 만들어준다.# nomfilx
