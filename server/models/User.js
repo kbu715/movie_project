@@ -31,7 +31,12 @@ const userSchema = mongoose.Schema({
     },
     tokenExp:{
         type:Number
-    }
+    },
+    movieList:[{
+        type:String,
+        unique:1
+    }]
+
 });
 //-------------------------------------------------1.
 userSchema.pre('save', function(next) {
@@ -89,6 +94,9 @@ userSchema.statics.findByToken = function(token,cb) {
         })
     })
 }
+
+
+
 
 
 const User = mongoose.model('User', userSchema);

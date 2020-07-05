@@ -7,6 +7,7 @@ import Message from "../../Components/Message";
 import Poster from "../../Components/Poster";
 import Helmet from "react-helmet";
 import { withRouter } from 'react-router-dom';
+
 const Container = styled.div`
   padding: 20px;
 `;
@@ -45,11 +46,12 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
             {/* <VideoTest /> */}
               <iframe width="100%" 
                       height="500" 
+                      
                       src="https://www.youtube.com/embed/GV3HUDMQ-F8?autoplay=1" 
                       frameBorder="0" 
                       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                       allowFullScreen 
-                      title="ddd">
+                      title="intro">
               </iframe> 
 
             {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/E11p66uJVMY?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> */}
@@ -58,7 +60,7 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
           {nowPlaying && nowPlaying.length > 0 && (
             <Section title="Now Playing">
               {nowPlaying.map((movie) => (
-                <Poster
+                <Poster 
                   key={movie.id}
                   id={movie.id}
                   imageUrl={movie.poster_path}

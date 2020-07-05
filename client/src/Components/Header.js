@@ -29,7 +29,6 @@ const List1 = styled.ul `
 const List2 = styled.ul `
   display: flex;
   justify-content: flex-end;
-  float:right;
   
   width: 100%;
   
@@ -71,7 +70,9 @@ export default withRouter(({location: {
             <Item current={pathname === "/search"}>
                 <SLink to="/search">Search</SLink>
             </Item>
-
+            <Item current={pathname === "/mylist"}>
+                <SLink to="/mylist">찜한 콘텐츠</SLink>
+            </Item>
         </List1>
 
         <List2>

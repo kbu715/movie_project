@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { registerUser } from '../../_actions/user_action'
 import './SignUp.css';
 import { withRouter } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 
 function SignUp(props){
 
@@ -61,16 +62,19 @@ function SignUp(props){
   
     return (
       <div className="auth-wrapper">
+        <Helmet>
+            <title>SignUp | Nomflix</title>
+        </Helmet>
         <div className="auth-inner">
           <form onSubmit={onSubmitHandler}>
-            <h3>Sign Up</h3>
+            {/* <h3>Sign Up</h3> */}
             
             <div className="form-group">
-              <label>Email address</label>
+              {/* <label>Email address</label> */}
               <input
                 type="email"
                 className="form-control"
-                placeholder="Enter email"
+                placeholder="이메일"
                 value={Email}
                 onChange={onEmailHandler}
               />
@@ -78,11 +82,11 @@ function SignUp(props){
 
 
             <div className="form-group">
-              <label>Name</label>
+              {/* <label>Name</label> */}
               <input
                 type="text"
                 className="form-control"
-                placeholder="Name"
+                placeholder="이름"
                 value={Name}
                 onChange={onNameHandler}
               />
@@ -90,29 +94,29 @@ function SignUp(props){
             
 
             <div className="form-group">
-              <label>Password</label>
+              {/* <label>Password</label> */}
               <input
                 type="password"
                 className="form-control"
-                placeholder="Enter password"
+                placeholder="비밀번호"
                 value={Password}
                 onChange={onPasswordHandler}
               />
             </div>
 
             <div className="form-group">
-              <label>Confirm Password</label>
+              {/* <label>Confirm Password</label> */}
               <input
                 type="password"
                 className="form-control"
-                placeholder="Enter password"
+                placeholder="비밀번호 확인"
                 value={ConfirmPassword}
                 onChange={onConfirmPasswordHandler}
               />
             </div>
 
             <button type="submit" className="btn btn-primary btn-block">
-              Sign Up
+              회원가입
             </button>
           </form>
         </div>

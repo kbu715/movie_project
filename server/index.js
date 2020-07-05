@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const config = require('./config/key');
 const { auth } = require('./middleware/auth');
 const { User } = require("./models/User");
-
 //application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -13,14 +12,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+
 mongoose.connect(config.mongoURI, {
   useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err))
 
 
-app.get('/', (req, res) => res.send('Hello World!~~ '))
+// app.get('/', (req, res) => res.send('Hello World!~~ '))
 
 app.get('/api/hello', (req, res) => res.send('Hello World!~~ '))
 
@@ -88,6 +88,22 @@ app.get('/api/users/auth', auth, (req, res) => {
   })
 })
 
+app.post('/api/users/likes', (req, res) => {
+  console.log(req.body)
+  User.updateOne({ email: req.body.email },
+    {
+      $push: {
+        movieList: req.body.imageUrl
+      }
+    }
+    , (err, user) => {
+      if (err) return res.json({ success: false, err });
+      return res.status(200).send({
+        success: true
+      })
+    }) 
+})
+
 app.get('/api/users/logout', auth, (req, res) => {  
   User.findOneAndUpdate({ _id: req.user._id },
     { token: "" }
@@ -100,7 +116,16 @@ app.get('/api/users/logout', auth, (req, res) => {
 })
 
 
-
+app.get('/api/users/mylist', function(req, res){
+  User.find({}, function(err, users){
+    if(err) return res.json(err);
+    console.log(users)
+    return res.status(200).send({
+      users
+    })    
+        
+  });
+});
 
 
 const port = 5000

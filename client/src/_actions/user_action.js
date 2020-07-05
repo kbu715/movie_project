@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
     REGISTER_USER,
     LOGIN_USER,
-    AUTH_USER
+    AUTH_USER,
 } from './types';
 
 export function loginUser(dataToSubmit) {
@@ -42,3 +42,4 @@ export function auth() {
         payload: request
     }
 }
+
